@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sentiment Analysis</title>
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+</head>
+<body>
+    <main>
+        <form method="POST" action="/analyze">
+            <input type="text" name="game_id" placeholder="Masukkan ID game">
+            <button type="submit">Analisis Sentimen</button>
+        </form>
+        {% if review_sentiments %}
+            <form>
+                <table>
+                    <tr>
+                        <th>Ulasan</th>
+                        <th>Sentimen</th>
+                    </tr>
+                    {% for review, sentiment in review_sentiments %}
+                        <tr>
+                            <td>{{ review }}</td>
+                            <td>{{ sentiment }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </form>
+        {% endif %}
+    </main>
+</body>
+</html>
